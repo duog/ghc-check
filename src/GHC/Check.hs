@@ -239,7 +239,7 @@ guessCompatibility :: PackageCheckResult -> CompatibilityGuess
 guessCompatibility result = case result of
   PackageCheckFailure evidence
     | Just problem <- findInterestingProblem evidence -> do
-      case problem of
+      case problem of -- TODO incomplete pattern match
         (packageName, VersionMismatch {..}) ->
           NotCompatible PackageVersionMismatch {..}
         ("base", AbiMismatch {..}) ->
